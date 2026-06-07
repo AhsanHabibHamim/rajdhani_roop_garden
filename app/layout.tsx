@@ -45,11 +45,33 @@ export const metadata: Metadata = {
   title: 'Rajdhani Roop Garden Resort | Luxury Boutique Hotel Dhaka',
   description: 'Experience luxury in the heart of Dhaka. Rajdhani Roop Garden offers 5-acre garden, world-class dining, spa, and unforgettable experiences.',
   keywords: ['luxury resort', 'hotel Dhaka', 'boutique hotel', 'garden resort', 'spa', 'dining'],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   generator: 'v0.app',
   openGraph: {
     title: 'Rajdhani Roop Garden Resort',
     description: 'Luxury boutique resort in Dhaka, Bangladesh',
     type: 'website',
+    images: [
+      {
+        url: '/images/Logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Rajdhani Roop Garden Resort',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rajdhani Roop Garden Resort',
+    description: 'Luxury boutique resort in Dhaka, Bangladesh',
+    images: ['/images/Logo.png'],
   },
   icons: {
     icon: [
