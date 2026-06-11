@@ -1,14 +1,25 @@
 import { PageHero } from '@/components/shared/PageHero'
 import { SectionHeading } from '@/components/shared/SectionHeading'
 import { RoomCard } from '@/components/shared/RoomCard'
-import { ROOMS } from '@/lib/constants'
+import { getRooms } from '@/lib/sanityQueries'
+import type { Room } from '@/lib/types'
 
 export const metadata = {
   title: 'Rooms & Suites | Rajdhani Roop Garden Resort',
   description: 'Explore our luxurious rooms and suites with stunning amenities and views.',
 }
 
-export default function RoomsPage() {
+export default async function RoomsPage() {
+  let rooms: Room[] = []
+  let isError = false
+
+  try {
+    rooms = await getRooms()
+  } catch (error) {
+    console.error('Failed to load rooms from Sanity:', error)
+    isError = true
+  }
+
   return (
     <>
       <PageHero
@@ -26,9 +37,17 @@ export default function RoomsPage() {
           />
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {ROOMS.map((room) => (
-              <RoomCard key={room.id} room={room} />
-            ))}
+            {isError ? (
+              <div className="col-span-full rounded-xl bg-white p-12 text-center text-charcoal/80">
+                Rooms are temporarily unavailable. Please check back soon.
+              </div>
+            ) : rooms.length ? (
+              rooms.map((room) => <RoomCard key={room.id} room={room} />)
+            ) : (
+              <div className="col-span-full rounded-xl bg-white p-12 text-center text-charcoal/80">
+                No rooms found in the CMS yet.
+              </div>
+            )}
           </div>
         </div>
       </section>

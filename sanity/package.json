@@ -1,0 +1,13 @@
+{
+  "name": "rajdhani-roop-sanity",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm exec sanity dev",
+    "build": "pnpm exec sanity build",
+    "deploy": "pnpm exec sanity deploy"
+  },
+  "dependencies": {
+    "styled-components": "^6.4.2"
+  }
+}

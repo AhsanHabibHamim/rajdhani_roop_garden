@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { Wifi, Users, Wind } from 'lucide-react'
 import Tilt from 'react-parallax-tilt'
 
-import { Room } from '@/lib/types'
+import type { Room } from '@/lib/types'
 
 interface RoomCardProps {
   room: Room

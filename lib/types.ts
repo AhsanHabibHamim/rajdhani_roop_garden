@@ -42,13 +42,44 @@ export interface BlogPost {
   title: string
   slug: string
   image: string
-  content: string
+  content?: any
   excerpt: string
   author: string
-  date: string
+  publishedAt: string
   category: string
-  readTime: number
+  readTime?: number
   tags?: string[]
+  coverImage?: any
+}
+
+export interface GalleryImage {
+  id: string
+  title: string
+  category: string
+  image: string
+  caption?: string
+}
+
+export interface DiningMenuItem {
+  name: string
+  description?: string
+  price?: number
+}
+
+export interface DiningMenuCategory {
+  title: string
+  description?: string
+  items?: DiningMenuItem[]
+}
+
+export interface DiningPage {
+  title: string
+  subtitle: string
+  heroImage: string
+  description: string
+  restaurants: DiningOption[]
+  menuCategories?: DiningMenuCategory[]
+  gallery?: string[]
 }
 
 export interface Offer {
