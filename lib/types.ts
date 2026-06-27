@@ -1,4 +1,4 @@
-export interface Room {
+export interface Project {
   id: string
   title: string
   slug: string
@@ -6,35 +6,27 @@ export interface Room {
   gallery?: string[]
   description: string
   fullDescription?: string
-  price: number
-  maxGuests: number
-  bedType: string
-  amenities: string[]
-  features?: string[]
-  size?: number
-}
-
-export interface DiningOption {
-  id: string
-  title: string
-  slug: string
-  image: string
-  description: string
-  cuisine: string
-  openingHours: string
-  specialDishes?: string[]
-}
-
-export interface Experience {
-  id: string
-  title: string
-  slug: string
-  image: string
-  description: string
-  duration: string
-  maxGuests?: number
-  price?: number
+  location: string
+  category: 'resort' | 'park' | 'garden' | 'rooftop' | 'commercial'
+  area: string
+  year: string
   highlights?: string[]
+}
+
+export interface Service {
+  id: string
+  title: string
+  description: string
+  icon: string
+}
+
+export interface Testimonial {
+  id: string
+  name: string
+  title: string
+  image: string
+  content: string
+  rating: number
 }
 
 export interface BlogPost {
@@ -58,51 +50,6 @@ export interface GalleryImage {
   category: string
   image: string
   caption?: string
-}
-
-export interface DiningMenuItem {
-  name: string
-  description?: string
-  price?: number
-}
-
-export interface DiningMenuCategory {
-  title: string
-  description?: string
-  items?: DiningMenuItem[]
-}
-
-export interface DiningPage {
-  title: string
-  subtitle: string
-  heroImage: string
-  description: string
-  restaurants: DiningOption[]
-  menuCategories?: DiningMenuCategory[]
-  gallery?: string[]
-}
-
-export interface Offer {
-  id: string
-  title: string
-  slug: string
-  image: string
-  description: string
-  originalPrice: number
-  discountedPrice: number
-  discount: number
-  highlights: string[]
-  validUntil?: string
-  featured?: boolean
-}
-
-export interface Testimonial {
-  id: string
-  name: string
-  title: string
-  image: string
-  content: string
-  rating: number
 }
 
 export interface FAQ {

@@ -34,7 +34,6 @@ export function Footer() {
 
   return (
     <footer className="bg-forest-dark text-cream pt-20 pb-8 relative overflow-hidden botanical-pattern">
-      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full mix-blend-multiply filter blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold-dark rounded-full mix-blend-multiply filter blur-3xl" />
@@ -48,12 +47,11 @@ export function Footer() {
           viewport={{ once: true, margin: '-100px' }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
         >
-          {/* About */}
           <motion.div variants={itemVariants}>
             <h3 className="text-2xl font-serif-heading text-gold mb-4">Rajdhani</h3>
             <p className="text-cream/80 text-sm leading-relaxed mb-6">
-              Experience timeless luxury in the heart of Dhaka. Our 5-acre botanical garden
-              sanctuary offers world-class hospitality and unforgettable moments.
+              Award-winning landscape design studio specializing in parks, resorts, and gardens across Bangladesh.
+              We transform spaces into living masterpieces.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -69,16 +67,15 @@ export function Footer() {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div variants={itemVariants}>
             <h4 className="text-lg font-serif-heading text-gold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
                 { label: 'Home', href: '/' },
                 { label: 'About Us', href: '/about' },
-                { label: 'Rooms', href: '/rooms' },
-                { label: 'Dining', href: '/dining' },
-                { label: 'Experiences', href: '/experiences' },
+                { label: 'Portfolio', href: '/gallery' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Contact', href: '/contact' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -92,18 +89,17 @@ export function Footer() {
             </ul>
           </motion.div>
 
-          {/* Amenities */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-lg font-serif-heading text-gold mb-6">Experience</h4>
+            <h4 className="text-lg font-serif-heading text-gold mb-6">Services</h4>
             <ul className="space-y-3">
               {[
-                { label: 'Spa & Wellness', href: '/experiences' },
-                { label: 'Fine Dining', href: '/dining' },
-                { label: 'Gallery', href: '/gallery' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Special Offers', href: '/offers' },
+                { label: 'Resort Design', href: '/' },
+                { label: 'Park & Garden', href: '/' },
+                { label: 'Rooftop Gardens', href: '/' },
+                { label: 'Redesign & Renovation', href: '/' },
+                { label: 'Consultation', href: '/' },
               ].map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-cream/90 hover:text-gold transition-colors duration-300 text-sm"
@@ -115,7 +111,6 @@ export function Footer() {
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
           <motion.div variants={itemVariants}>
             <h4 className="text-lg font-serif-heading text-gold mb-6">Contact</h4>
             <div className="space-y-4">
@@ -130,31 +125,29 @@ export function Footer() {
               <div className="flex gap-3 items-center">
                 <Phone size={18} className="text-gold flex-shrink-0" />
                 <a
-                  href="tel:+880298850000"
+                  href="tel:+8801700123456"
                   className="text-cream/90 hover:text-gold transition-colors duration-300 text-sm"
                 >
-                  +880 2 9885 0000
+                  +880 1700-123-456
                 </a>
               </div>
               <div className="flex gap-3 items-center">
                 <Mail size={18} className="text-gold flex-shrink-0" />
                 <a
-                  href="mailto:info@rajdhanigarden.com"
+                  href="mailto:hello@rajdhanigarden.com"
                   className="text-cream/90 hover:text-gold transition-colors duration-300 text-sm break-all"
                 >
-                  info@rajdhanigarden.com
+                  hello@rajdhanigarden.com
                 </a>
               </div>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Divider */}
         <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent my-12" />
 
-        {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-cream/90 text-sm">
-          <p>&copy; 2024 Rajdhani Roop Garden Resort. All rights reserved.</p>
+          <p>&copy; 2024 Rajdhani Roop Garden. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-gold transition-colors duration-300">
               Privacy Policy

@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "pnpm exec sanity dev",
     "build": "pnpm exec sanity build",
+    "vercel-build": "pnpm exec sanity build",
     "deploy": "pnpm exec sanity deploy"
   },
   "dependencies": {
-    "styled-components": "^6.4.2"
+    "styled-components": "^6.4.2",
+    "sanity": "^6.0.0"
   }
 }

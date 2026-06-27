@@ -1,44 +1,44 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export function CTASection() {
   return (
-    <section className="w-full py-20 md:py-32" style={{ backgroundColor: '#1A3C34' }}>
-      <div className="section-container text-center">
-        <motion.h2
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-          style={{ color: '#E8D4A8' }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          Ready to Experience Paradise?
-        </motion.h2>
+    <section className="w-full section-padding relative overflow-hidden" style={{ backgroundColor: '#1A3C34' }}>
+      <div className="absolute inset-0 opacity-10">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: 'url("/images/image06.jpeg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      </div>
 
-        <motion.p
-          className="text-lg md:text-xl mb-8 max-w-2xl mx-auto"
-          style={{ color: '#D4CFC4' }}
-          initial={{ opacity: 0, y: 20 }}
+      <div className="section-container relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mx-auto"
         >
-          Plan your perfect getaway today and create memories that will last a lifetime.
-        </motion.p>
-
-        <motion.button
-          className="shimmer-btn"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.3 }}
-          viewport={{ once: true }}
-        >
-          Book Now
-        </motion.button>
+          <h2 className="text-4xl md:text-6xl font-serif-heading text-cream mb-6">
+            Ready to Transform Your Space?
+          </h2>
+          <p className="text-lg text-cream/80 mb-10 max-w-2xl mx-auto">
+            Let&apos;s bring your vision to life. Whether it&apos;s a new resort, a park redesign, or a rooftop garden,
+            we have the expertise to make it extraordinary.
+          </p>
+          <Link
+            href="/contact"
+            className="shimmer-btn text-lg inline-block"
+          >
+            Start Your Project
+          </Link>
+        </motion.div>
       </div>
     </section>
   )

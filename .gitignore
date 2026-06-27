@@ -9,6 +9,10 @@ __v0_jsx-dev-runtime.ts
 # Environment variables
 .env*.local
 
+# Sanity build outputs
+sanity/dist/
+sanity/.sanity/
+
 # Common ignores
 node_modules
 .next/

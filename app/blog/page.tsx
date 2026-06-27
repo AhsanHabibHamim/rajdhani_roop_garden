@@ -5,8 +5,8 @@ import { getBlogPosts } from '@/lib/sanityQueries'
 import type { BlogPost } from '@/lib/types'
 
 export const metadata = {
-  title: 'Blog | Rajdhani Roop Garden Resort',
-  description: 'Read stories, tips, and insights from Rajdhani Roop Garden Resort.',
+  title: 'Blog | Rajdhani Roop Garden | Park & Resort Design',
+  description: 'Read insights on landscape design, resort architecture, and garden transformation in Bangladesh.',
 }
 
 export default async function BlogPage() {
@@ -89,8 +89,8 @@ export default async function BlogPage() {
     <>
       <PageHero
         title="Our Blog"
-        subtitle="Stories and Insights from Rajdhani Roop"
-        imageSrc="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92"
+        subtitle="Insights on Landscape Design & Architecture"
+        imageSrc="/images/image05.jpeg"
       />
 
       <section className="w-full section-padding" style={{ backgroundColor: '#F5F0E8' }}>
@@ -98,7 +98,7 @@ export default async function BlogPage() {
           <SectionHeading
             label="ARTICLES"
             title="Latest Updates"
-            subtitle="Discover travel tips, wellness advice, and resort stories."
+            subtitle="Discover design insights, plant guides, and project stories."
           />
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

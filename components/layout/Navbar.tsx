@@ -9,10 +9,7 @@ import { motion } from 'framer-motion'
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Rooms', href: '/rooms' },
-  { label: 'Dining', href: '/dining' },
-  { label: 'Experiences', href: '/experiences' },
-  { label: 'Gallery', href: '/gallery' },
+  { label: 'Portfolio', href: '/gallery' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -35,7 +32,6 @@ export function Navbar() {
 
   return (
     <>
-      {/* Main Navbar */}
       <nav
         className={`fixed top-0 left-0 right-0 z-navbar transition-all duration-300 ${
           isScrolled
@@ -44,7 +40,6 @@ export function Navbar() {
         }`}
       >
         <div className="section-container py-4 flex items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="flex flex-col gap-0">
             <span className="text-2xl md:text-3xl font-serif-heading text-forest font-bold">
               Rajdhani
@@ -54,7 +49,6 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
@@ -78,17 +72,15 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
           <div className="hidden md:block">
             <Link
-              href="/booking"
+              href="/contact"
               className="shimmer-btn text-sm font-accent tracking-widest"
             >
-              Book Now
+              Start a Project
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-forest hover:text-gold transition-colors duration-300"
@@ -99,7 +91,6 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -123,11 +114,11 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href="/booking"
+              href="/contact"
               onClick={() => setIsOpen(false)}
               className="shimmer-btn text-sm font-accent tracking-widest w-full text-center"
             >
-              Book Now
+              Start a Project
             </Link>
           </div>
         </motion.div>

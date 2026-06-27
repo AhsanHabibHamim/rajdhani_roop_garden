@@ -2,10 +2,10 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, Playfair_Display, Jost, Cinzel } from 'next/font/google'
 import './globals.css'
-import { LenisProvider } from '@/components/providers/LenisProvider'
-import { CustomCursor } from '@/components/providers/CustomCursor'
-import { LoadingScreen } from '@/components/providers/LoadingScreen'
-import { PageTransition } from '@/components/providers/PageTransition'
+import { LenisProvider } from '@/components/shared/providers/LenisProvider'
+import { CustomCursor } from '@/components/shared/providers/CustomCursor'
+import { LoadingScreen } from '@/components/shared/providers/LoadingScreen'
+import { PageTransition } from '@/components/shared/providers/PageTransition'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 
@@ -42,9 +42,9 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Rajdhani Roop Garden Resort | Luxury Boutique Hotel Dhaka',
-  description: 'Experience luxury in the heart of Dhaka. Rajdhani Roop Garden offers 5-acre garden, world-class dining, spa, and unforgettable experiences.',
-  keywords: ['luxury resort', 'hotel Dhaka', 'boutique hotel', 'garden resort', 'spa', 'dining'],
+  title: 'Rajdhani Roop Garden | Park & Resort Design Bangladesh',
+  description: 'Expert landscape design and redesign for parks, resorts, and gardens across Bangladesh. Transform your space with award-winning design.',
+  keywords: ['landscape design', 'resort design', 'park design', 'garden design', 'Bangladesh', 'landscape architect'],
   robots: {
     index: true,
     follow: true,
@@ -55,22 +55,22 @@ export const metadata: Metadata = {
   },
   generator: 'v0.app',
   openGraph: {
-    title: 'Rajdhani Roop Garden Resort',
-    description: 'Luxury boutique resort in Dhaka, Bangladesh',
+    title: 'Rajdhani Roop Garden | Park & Resort Design',
+    description: 'Expert landscape design for parks, resorts, and gardens across Bangladesh',
     type: 'website',
     images: [
       {
         url: '/images/Logo.png',
         width: 1200,
         height: 630,
-        alt: 'Rajdhani Roop Garden Resort',
+        alt: 'Rajdhani Roop Garden',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rajdhani Roop Garden Resort',
-    description: 'Luxury boutique resort in Dhaka, Bangladesh',
+    title: 'Rajdhani Roop Garden | Park & Resort Design',
+    description: 'Expert landscape design for parks, resorts, and gardens across Bangladesh',
     images: ['/images/Logo.png'],
   },
   icons: {

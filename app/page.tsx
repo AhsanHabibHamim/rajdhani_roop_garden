@@ -1,6 +1,6 @@
 import { HeroSection } from '@/components/home/HeroSection'
 import { AboutSection } from '@/components/home/AboutSection'
-import { RoomsSection } from '@/components/home/RoomsSection'
+import { PortfolioSection } from '@/components/home/PortfolioSection'
 import { TestimonialsSection } from '@/components/home/TestimonialsSection'
 import { CTASection } from '@/components/home/CTASection'
 
@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <HeroSection />
       <AboutSection />
-      <RoomsSection />
+      <PortfolioSection />
       <TestimonialsSection />
       <CTASection />
     </>

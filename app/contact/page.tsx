@@ -6,30 +6,28 @@ import { SectionHeading } from '@/components/shared/SectionHeading'
 import { motion } from 'framer-motion'
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', project: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate submission
     await new Promise(resolve => setTimeout(resolve, 1000))
     setIsSubmitting(false)
-    setFormData({ name: '', email: '', message: '' })
+    setFormData({ name: '', email: '', phone: '', project: '', message: '' })
   }
 
   return (
     <>
       <PageHero
-        title="Get In Touch"
-        subtitle="We&apos;d love to hear from you"
-        imageSrc="https://plus.unsplash.com/premium_photo-1669658981858-b2ae0d7581a3?text=Demo"
+        title="Let's Create Together"
+        subtitle="Tell us about your project and we'll bring your vision to life"
+        imageSrc="/images/image04.jpeg"
       />
 
       <section className="w-full section-padding" style={{ backgroundColor: '#F5F0E8' }}>
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Info */}
             <div>
               <SectionHeading
                 label="CONTACT"
@@ -42,8 +40,9 @@ export default function ContactPage() {
                     Location
                   </h3>
                   <p style={{ color: '#4A4A47' }}>
-                    Rajdhani Roop Garden Resort<br />
-                    Dhaka, Bangladesh
+                    Rajdhani Roop Garden<br />
+                    Banani, Dhaka 1213<br />
+                    Bangladesh
                   </p>
                 </div>
 
@@ -61,7 +60,7 @@ export default function ContactPage() {
                     Email
                   </h3>
                   <p style={{ color: '#4A4A47' }}>
-                    info@rajdhaniresort.com
+                    hello@rajdhanigarden.com
                   </p>
                 </div>
 
@@ -70,19 +69,19 @@ export default function ContactPage() {
                     Hours
                   </h3>
                   <p style={{ color: '#4A4A47' }}>
-                    Monday - Sunday<br />
-                    24/7 Service Available
+                    Weekdays: 9:00 AM - 6:00 PM<br />
+                    Saturday: 10:00 AM - 4:00 PM<br />
+                    Sunday: Closed
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form */}
             <div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#1A3C34' }}>
-                    Name
+                    Name *
                   </label>
                   <input
                     type="text"
@@ -96,7 +95,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#1A3C34' }}>
-                    Email
+                    Email *
                   </label>
                   <input
                     type="email"
@@ -110,7 +109,40 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#1A3C34' }}>
-                    Message
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-4 py-3 rounded-lg"
+                    style={{ backgroundColor: '#FDFBF7', color: '#2B2B2B', border: '1px solid #D4CFC4' }}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#1A3C34' }}>
+                    Project Type
+                  </label>
+                  <select
+                    value={formData.project}
+                    onChange={(e) => setFormData({ ...formData, project: e.target.value })}
+                    className="w-full px-4 py-3 rounded-lg"
+                    style={{ backgroundColor: '#FDFBF7', color: '#2B2B2B', border: '1px solid #D4CFC4' }}
+                  >
+                    <option value="">Select project type</option>
+                    <option value="resort">Resort Design</option>
+                    <option value="park">Park & Garden</option>
+                    <option value="rooftop">Rooftop Garden</option>
+                    <option value="redesign">Redesign & Renovation</option>
+                    <option value="consultation">Consultation</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#1A3C34' }}>
+                    Message *
                   </label>
                   <textarea
                     value={formData.message}
