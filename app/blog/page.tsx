@@ -21,7 +21,7 @@ export default async function BlogPage() {
   }
 
   const content = isError ? (
-    <div className="col-span-full rounded-xl bg-white p-12 text-center text-charcoal/80">
+    <div className="col-span-full rounded-xl bg-cream-light p-16 text-center text-bark shadow-forest/5 luxury-border">
       Blog posts are temporarily unavailable.
     </div>
   ) : posts.length ? (
@@ -29,8 +29,7 @@ export default async function BlogPage() {
       <Link
         key={post.slug || index}
         href={`/blog/${post.slug}`}
-        className="block rounded-lg overflow-hidden group"
-        style={{ backgroundColor: '#FDFBF7' }}
+        className="block rounded-xl overflow-hidden group bg-cream-light luxury-border-hover shadow-forest/5"
       >
         <div
           className="h-48 overflow-hidden"
@@ -44,13 +43,10 @@ export default async function BlogPage() {
 
         <div className="p-6">
           <div className="flex items-center gap-4 mb-4">
-            <span
-              className="text-xs font-semibold px-3 py-1 rounded-full"
-              style={{ backgroundColor: '#E8D4A8', color: '#1A3C34' }}
-            >
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gold-light text-forest">
               {post.category}
             </span>
-            <span style={{ color: '#4A4A47' }} className="text-xs">
+            <span className="text-xs text-bark">
               {new Date(post.publishedAt).toLocaleDateString('en-US', {
                 month: 'short',
                 day: 'numeric',
@@ -59,28 +55,20 @@ export default async function BlogPage() {
             </span>
           </div>
 
-          <h3
-            className="text-xl font-bold mb-3 group-hover:text-gold transition-colors"
-            style={{ color: '#1A3C34' }}
-          >
+          <h3 className="text-xl font-bold text-forest mb-3 font-serif-heading group-hover:text-gold transition-colors duration-300">
             {post.title}
           </h3>
 
-          <p style={{ color: '#4A4A47' }} className="text-sm">
-            {post.excerpt}
-          </p>
+          <p className="text-bark text-sm leading-relaxed">{post.excerpt}</p>
 
-          <button
-            className="mt-4 text-sm font-semibold"
-            style={{ color: '#C9A84C' }}
-          >
-            Read More →
-          </button>
+          <div className="mt-4 text-sm font-semibold text-gold font-accent tracking-wider">
+            Read More &rarr;
+          </div>
         </div>
       </Link>
     ))
   ) : (
-    <div className="col-span-full rounded-xl bg-white p-12 text-center text-charcoal/80">
+    <div className="col-span-full rounded-xl bg-cream-light p-16 text-center text-bark shadow-forest/5 luxury-border">
       No blog posts have been published yet.
     </div>
   )
@@ -93,15 +81,17 @@ export default async function BlogPage() {
         imageSrc="/images/image05.jpeg"
       />
 
-      <section className="w-full section-padding" style={{ backgroundColor: '#F5F0E8' }}>
-        <div className="section-container">
+      <section className="w-full section-padding bg-cream relative overflow-hidden">
+        <div className="leaf-pattern absolute inset-0 pointer-events-none" />
+
+        <div className="section-container relative z-10">
           <SectionHeading
             label="ARTICLES"
             title="Latest Updates"
-            subtitle="Discover design insights, plant guides, and project stories."
+            description="Discover design insights, plant guides, and project stories."
           />
 
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {content}
           </div>
         </div>

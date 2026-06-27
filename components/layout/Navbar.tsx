@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -20,31 +20,36 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-
-    window.addEventListener('scroll', handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
 
   const isActive = (href: string) => pathname === href
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-navbar transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-navbar transition-all duration-500 ${
           isScrolled
-            ? 'bg-cream/95 backdrop-blur-custom shadow-lg'
+            ? 'bg-cream/90 backdrop-blur-custom shadow-lg shadow-forest/5'
             : 'bg-transparent'
         }`}
       >
         <div className="section-container py-4 flex items-center justify-between">
-          <Link href="/" className="flex flex-col gap-0">
-            <span className="text-2xl md:text-3xl font-serif-heading text-forest font-bold">
+          <Link href="/" className="flex flex-col gap-0 relative">
+            <span className={`text-2xl md:text-3xl font-serif-heading font-bold transition-colors duration-300 ${
+              isScrolled ? 'text-forest' : 'text-cream'
+            }`}>
               Rajdhani
             </span>
-            <span className="text-xs md:text-sm text-gold font-serif-sub">
+            <span className={`text-xs md:text-sm font-serif-sub transition-colors duration-300 ${
+              isScrolled ? 'text-gold' : 'text-gold-light/80'
+            }`}>
               ROOP GARDEN
             </span>
           </Link>
@@ -54,17 +59,19 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-accent tracking-widest transition-colors duration-300 relative pb-1 ${
-                  isActive(link.href)
-                    ? 'text-gold'
-                    : 'text-charcoal hover:text-gold'
+                className={`text-sm font-accent tracking-widest transition-colors duration-300 relative py-1 ${
+                  isScrolled
+                    ? isActive(link.href) ? 'text-gold' : 'text-charcoal/80 hover:text-gold'
+                    : isActive(link.href) ? 'text-gold' : 'text-cream/80 hover:text-cream'
                 }`}
               >
                 {link.label}
                 {isActive(link.href) && (
                   <motion.div
                     layoutId="navbar-underline"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gold"
+                    className={`absolute bottom-0 left-0 right-0 h-0.5 ${
+                      isScrolled ? 'bg-gold' : 'bg-gold-light'
+                    }`}
                     initial={false}
                   />
                 )}
@@ -75,7 +82,9 @@ export function Navbar() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="shimmer-btn text-sm font-accent tracking-widest"
+              className={`shimmer-btn text-sm font-accent tracking-widest inline-block ${
+                !isScrolled ? 'bg-gold/90 hover:bg-gold' : ''
+              }`}
             >
               Start a Project
             </Link>
@@ -83,7 +92,9 @@ export function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-forest hover:text-gold transition-colors duration-300"
+            className={`md:hidden transition-colors duration-300 ${
+              isScrolled ? 'text-forest hover:text-gold' : 'text-cream hover:text-gold-light'
+            }`}
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -91,38 +102,37 @@ export function Navbar() {
         </div>
       </nav>
 
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="fixed top-16 left-0 right-0 bg-cream/95 backdrop-blur-custom md:hidden z-40 border-b border-gold/20"
-        >
-          <div className="section-container py-6 flex flex-col gap-4">
-            {navLinks.map((link) => (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-[73px] left-0 right-0 bg-cream/95 backdrop-blur-custom md:hidden z-modal border-b border-gold/20 shadow-lg"
+          >
+            <div className="section-container py-6 flex flex-col gap-3">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-accent tracking-widest transition-colors duration-300 py-2 ${
+                    isActive(link.href) ? 'text-gold' : 'text-charcoal/80 hover:text-gold'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`text-sm font-accent tracking-widest transition-colors duration-300 ${
-                  isActive(link.href)
-                    ? 'text-gold'
-                    : 'text-charcoal hover:text-gold'
-                }`}
+                href="/contact"
+                className="shimmer-btn text-sm font-accent tracking-widest w-full text-center mt-2"
               >
-                {link.label}
+                Start a Project
               </Link>
-            ))}
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="shimmer-btn text-sm font-accent tracking-widest w-full text-center"
-            >
-              Start a Project
-            </Link>
-          </div>
-        </motion.div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

@@ -31,33 +31,39 @@ export default async function BlogPostPage({ params }: { params: { slug?: string
         imageSrc={post.image}
       />
 
-      <section className="w-full section-padding" style={{ backgroundColor: '#F5F0E8' }}>
-        <div className="section-container">
+      <section className="w-full section-padding bg-cream relative overflow-hidden">
+        <div className="leaf-pattern absolute inset-0 pointer-events-none" />
+
+        <div className="section-container relative z-10">
           <SectionHeading
             label="ARTICLE"
             title={post.title}
           />
 
-          <div className="mt-10 text-charcoal/70">
-            <p className="text-sm">
-              {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric',
-              })}
-              {' • '}
-              {post.author}
-            </p>
+          <div className="mt-8 text-bark/70 text-sm flex items-center gap-2 justify-center">
+            <span>{new Date(post.publishedAt).toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })}</span>
+            <span className="text-gold">&bull;</span>
+            <span>{post.author}</span>
           </div>
 
-          <div className="mt-10 rounded-xl bg-white p-8" style={{ backgroundColor: '#FDFBF7' }}>
+          <div className="mt-10 max-w-3xl mx-auto bg-cream-light rounded-2xl p-8 md:p-12 luxury-border shadow-forest/5">
             <PortableText
               value={post.content ?? []}
               components={{
                 block: {
-                  normal: ({ children }) => <p className="mb-6 leading-relaxed text-charcoal/70">{children}</p>,
-                  h2: ({ children }) => <h2 className="mt-10 mb-6 text-3xl font-bold text-charcoal">{children}</h2>,
-                  h3: ({ children }) => <h3 className="mt-8 mb-4 text-2xl font-semibold text-charcoal">{children}</h3>,
+                  normal: ({ children }) => (
+                    <p className="mb-6 leading-relaxed text-bark text-base md:text-lg">{children}</p>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="mt-12 mb-6 text-3xl font-bold text-forest font-serif-heading">{children}</h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="mt-10 mb-4 text-2xl font-semibold text-forest font-serif-heading">{children}</h3>
+                  ),
                 },
               }}
             />

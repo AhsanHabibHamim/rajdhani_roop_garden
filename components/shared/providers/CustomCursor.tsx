@@ -8,7 +8,6 @@ export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Only show custom cursor on desktop
     if (typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
       setIsVisible(true)
     }
@@ -43,7 +42,6 @@ export function CustomCursor() {
     document.addEventListener('mousemove', onMouseMove)
     requestAnimationFrame(animate)
 
-    // Hover effects
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement
       if (
@@ -82,26 +80,24 @@ export function CustomCursor() {
           position: fixed;
           width: 32px;
           height: 32px;
-          border: 2px solid #C9A84C;
+          border: 2px solid var(--color-gold, #C9A84C);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
           transform: translate(-50%, -50%);
           transition: all 0.3s ease;
         }
-
         .cursor-outer.cursor-expand-active {
           width: 56px;
           height: 56px;
-          border-color: #C9A84C;
+          border-color: var(--color-gold, #C9A84C);
           box-shadow: 0 0 20px rgba(201, 168, 76, 0.5);
         }
-
         .cursor-inner {
           position: fixed;
           width: 6px;
           height: 6px;
-          background-color: #C9A84C;
+          background-color: var(--color-gold, #C9A84C);
           border-radius: 50%;
           pointer-events: none;
           z-index: 10000;

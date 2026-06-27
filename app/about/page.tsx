@@ -22,14 +22,15 @@ export default function AboutPage() {
         imageSrc="/images/image02.jpeg"
       />
 
-      <section className="w-full section-padding" style={{ backgroundColor: '#F5F0E8' }}>
-        <div className="section-container max-w-3xl">
+      <section className="w-full section-padding bg-cream relative overflow-hidden">
+        <div className="leaf-pattern absolute inset-0 pointer-events-none" />
+        <div className="section-container max-w-3xl relative z-10">
           <SectionHeading
             label="ABOUT US"
             title="The Rajdhani Vision"
           />
 
-          <div className="mt-12 space-y-8" style={{ color: '#4A4A47' }}>
+          <div className="mt-12 space-y-6 text-bark">
             <p className="text-lg leading-relaxed">
               At Rajdhani Roop Garden, we believe that every outdoor space has the potential to be a masterpiece.
               As a dedicated landscape design studio based in Dhaka, we specialize in creating and transforming
@@ -50,25 +51,25 @@ export default function AboutPage() {
 
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl font-bold mb-2" style={{ color: '#C9A84C' }}>
+              <div key={index} className="text-center group">
+                <div className="text-4xl md:text-5xl font-bold text-gold mb-2 font-serif-heading transition-all duration-300 group-hover:scale-110">
                   {stat.number}
                 </div>
-                <p style={{ color: '#4A4A47' }}>{stat.label}</p>
+                <p className="text-bark text-sm">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full section-padding" style={{ backgroundColor: '#FDFBF7' }}>
+      <section className="w-full section-padding bg-cream-light">
         <div className="section-container max-w-3xl">
           <SectionHeading
             label="OUR MISSION"
             title="Transforming Spaces, Enriching Lives"
           />
 
-          <div className="mt-12 space-y-6" style={{ color: '#4A4A47' }}>
+          <div className="mt-12 space-y-6 text-bark">
             <p className="text-lg leading-relaxed">
               Our mission is to elevate Bangladesh&apos;s landscape architecture by combining artistic vision
               with environmental responsibility. We strive to create outdoor spaces that inspire, rejuvenate,

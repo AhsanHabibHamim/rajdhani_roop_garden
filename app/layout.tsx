@@ -45,27 +45,13 @@ export const metadata: Metadata = {
   title: 'Rajdhani Roop Garden | Park & Resort Design Bangladesh',
   description: 'Expert landscape design and redesign for parks, resorts, and gardens across Bangladesh. Transform your space with award-winning design.',
   keywords: ['landscape design', 'resort design', 'park design', 'garden design', 'Bangladesh', 'landscape architect'],
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   generator: 'v0.app',
   openGraph: {
     title: 'Rajdhani Roop Garden | Park & Resort Design',
     description: 'Expert landscape design for parks, resorts, and gardens across Bangladesh',
     type: 'website',
-    images: [
-      {
-        url: '/images/Logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Rajdhani Roop Garden',
-      },
-    ],
+    images: [{ url: '/images/Logo.png', width: 1200, height: 630, alt: 'Rajdhani Roop Garden' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -74,20 +60,7 @@ export const metadata: Metadata = {
     images: ['/images/Logo.png'],
   },
   icons: {
-    icon: [
-      {
-        url: '/images/Logo.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/images/Logo.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/images/Logo.png',
-        type: 'image/png',
-      },
-    ],
+    icon: [{ url: '/images/Logo.png', media: '(prefers-color-scheme: light)' }, { url: '/images/Logo.png', media: '(prefers-color-scheme: dark)' }, { url: '/images/Logo.png', type: 'image/png' }],
     apple: '/images/Logo.png',
   },
 }
@@ -101,9 +74,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${cormorantGaramond.variable} ${playfairDisplay.variable} ${jost.variable} ${cinzel.variable}`}
-      style={{ backgroundColor: '#F5F0E8' }}
     >
-      <body style={{ backgroundColor: '#F5F0E8', color: '#2B2B2B' }}>
+      <body>
         <LenisProvider>
           <PageTransition>
             <CustomCursor />
