@@ -140,7 +140,7 @@ export function Footer() {
               <div className="flex gap-3 items-start">
                 <MapPin size={18} className="text-gold mt-1 flex-shrink-0" />
                 <p className="text-cream/60 text-sm">
-                  Banani, Dhaka 1213
+                  House#34, Road#10 sector#6, Uttara, Dhaka-1230
                   <br />
                   Bangladesh
                 </p>
@@ -148,10 +148,10 @@ export function Footer() {
               <div className="flex gap-3 items-center">
                 <Phone size={18} className="text-gold flex-shrink-0" />
                 <a
-                  href="tel:+8801700123456"
+                  href="tel:+8801721-750074"
                   className="text-cream/70 hover:text-gold transition-colors duration-300 text-sm"
                 >
-                  +880 1700-123-456
+                  +880 1721-750074
                 </a>
               </div>
               <div className="flex gap-3 items-center">

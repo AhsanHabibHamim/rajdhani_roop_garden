@@ -7,7 +7,7 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
   try {
     const { id } = await params
     const db = getDb()
-    db.prepare('DELETE FROM testimonials WHERE id=?').run(id)
+    await db.execute({ sql: 'DELETE FROM testimonials WHERE id=?', args: [id] })
     return NextResponse.json({ success: true })
   } catch (e) {
     return NextResponse.json({ error: String(e) }, { status: 500 })

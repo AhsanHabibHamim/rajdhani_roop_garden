@@ -3,6 +3,6 @@ import { getDb } from '@/lib/db'
 
 export async function GET() {
   const db = getDb()
-  const shorts = db.prepare('SELECT * FROM youtube_shorts ORDER BY created_at DESC').all()
-  return NextResponse.json(shorts)
+  const result = await db.execute('SELECT * FROM youtube_shorts ORDER BY created_at DESC')
+  return NextResponse.json(result.rows)
 }

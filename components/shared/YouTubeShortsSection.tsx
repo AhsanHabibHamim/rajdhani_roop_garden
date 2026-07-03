@@ -45,7 +45,7 @@ export function YouTubeShortsSection() {
             >
               <div className="relative" style={{ paddingBottom: '177.78%' }}>
                 <iframe
-                  src={`https://www.youtube.com/embed/${short.video_id}`}
+                  src={`https://www.youtube.com/embed/${short.video_id}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`}
                   title={short.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
