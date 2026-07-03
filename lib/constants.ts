@@ -215,7 +215,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: '1',
     name: 'Fahim Rahman',
     title: 'Owner, Lakeview Resort',
-    image: IMG('image22.jpeg'),
+    image: 'https://i.pravatar.cc/150?u=fahim',
     content: 'The transformation of our resort exceeded all expectations. Our guests constantly compliment the stunning landscape design. Truly world-class work.',
     rating: 5,
   },
@@ -223,7 +223,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: '2',
     name: 'Sultana Ahmed',
     title: 'CEO, Green Terrace Holdings',
-    image: IMG('image01.jpeg'),
+    image: 'https://i.pravatar.cc/150?u=sultana',
     content: 'Our rooftop garden has become the highlight of the building. The design perfectly balances aesthetics with functionality. Highly recommended.',
     rating: 5,
   },
@@ -231,7 +231,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: '3',
     name: 'Dr. Kabir Hossain',
     title: 'Director, Botanical Garden Retreat',
-    image: IMG('image02.jpeg'),
+    image: 'https://i.pravatar.cc/150?u=kabir',
     content: 'An incredible vision brought to life. The themed gardens and meditation spaces are exquisite. A true sanctuary for nature lovers.',
     rating: 5,
   },
@@ -239,7 +239,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: '4',
     name: 'Nadia Islam',
     title: 'Developer, Sky Garden Residences',
-    image: IMG('image03.jpeg'),
+    image: 'https://i.pravatar.cc/150?u=nadia',
     content: 'The sky gardens have become our flagship feature. The attention to detail and understanding of tropical landscapes is remarkable.',
     rating: 5,
   },
@@ -294,11 +294,20 @@ export const CONTACT_INFO = {
     sunday: 'Closed',
   },
   socialMedia: {
-    facebook: 'https://facebook.com/rajdhanigarden',
-    instagram: 'https://instagram.com/rajdhanigarden',
-    linkedin: 'https://linkedin.com/company/rajdhanigarden',
+    youtube: 'https://youtube.com/@rajdhaniroopgarden',
+    tiktok: 'https://tiktok.com/@rajdhaniroopgarden',
+    instagram: 'https://www.instagram.com/rajdhaniroopgarden',
+    facebook: 'https://www.facebook.com/RajdhaniRoopGarden',
   },
 }
+
+export const YOUTUBE_SHORTS = [
+  { id: '_ogzRTmfbrY', title: 'Rajdhani Roop Garden Short 1' },
+  { id: 'ppVPJaKIVac', title: 'Rajdhani Roop Garden Short 2' },
+  { id: 'vpM3Q0iHT8M', title: 'Rajdhani Roop Garden Short 3' },
+  { id: 'IlkSNvzIaeQ', title: 'Rajdhani Roop Garden Short 4' },
+  { id: 'w7Yumcr4wRI', title: 'Rajdhani Roop Garden Short 5' },
+]
 
 export const STATS = {
   projectsCompleted: 50,

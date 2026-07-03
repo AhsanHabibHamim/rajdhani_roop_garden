@@ -1,11 +1,31 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { SectionHeading } from '@/components/shared/SectionHeading'
-import { TESTIMONIALS } from '@/lib/constants'
 import { Star } from 'lucide-react'
 
+interface Testimonial {
+  id: string
+  name: string
+  title: string
+  image: string
+  content: string
+  rating: number
+}
+
 export function TestimonialsSection() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+
+  useEffect(() => {
+    fetch('/api/public/testimonials')
+      .then(r => r.json())
+      .then(setTestimonials)
+      .catch(() => {})
+  }, [])
+
+  if (!testimonials.length) return null
+
   return (
     <section className="w-full section-padding bg-cream relative overflow-hidden">
       <div className="botanical-pattern absolute inset-0 pointer-events-none" />
@@ -18,7 +38,7 @@ export function TestimonialsSection() {
         />
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {TESTIMONIALS.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
               className="relative bg-cream-light rounded-xl p-8 luxury-border-hover shadow-forest/5"

@@ -1,14 +1,29 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { PageHero } from '@/components/shared/PageHero'
 import { SectionHeading } from '@/components/shared/SectionHeading'
-import { PROJECTS } from '@/lib/constants'
+import { YouTubeShortsSection } from '@/components/shared/YouTubeShortsSection'
 import Link from 'next/link'
 
-export const metadata = {
-  title: 'Portfolio | Rajdhani Roop Garden | Park & Resort Design',
-  description: 'Explore our portfolio of landscape design projects including resorts, parks, gardens, and rooftop spaces across Bangladesh.',
+interface GalleryImage {
+  id: string
+  title: string
+  category: string
+  caption: string
+  image: string
 }
 
 export default function GalleryPage() {
+  const [images, setImages] = useState<GalleryImage[]>([])
+
+  useEffect(() => {
+    fetch('/api/public/gallery')
+      .then(r => r.json())
+      .then(setImages)
+      .catch(() => {})
+  }, [])
+
   return (
     <>
       <PageHero
@@ -27,53 +42,41 @@ export default function GalleryPage() {
           />
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {PROJECTS.length ? (
-              PROJECTS.map((project) => (
+            {images.length ? (
+              images.map((img) => (
                 <div
-                  key={project.id}
+                  key={img.id}
                   className="group relative bg-cream-light rounded-xl overflow-hidden luxury-border-hover shadow-forest/5"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <div
                       className="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-110"
-                      style={{ backgroundImage: `url(${project.image})` }}
+                      style={{ backgroundImage: `url(${img.image})`, backgroundColor: '#D4CFC4' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-forest-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                      <span className="text-xs font-accent tracking-widest text-gold-light uppercase">{project.category}</span>
+                      <span className="text-xs font-accent tracking-widest text-gold-light uppercase">{img.category}</span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-accent tracking-wider text-gold uppercase">{project.location}</span>
-                      <span className="text-xs text-bark">{project.year}</span>
-                    </div>
                     <h3 className="text-xl font-bold text-forest mb-2 font-serif-heading transition-colors duration-300 group-hover:text-gold">
-                      {project.title}
+                      {img.title}
                     </h3>
-                    <p className="text-sm text-bark mb-4 leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.highlights?.slice(0, 2).map((highlight, i) => (
-                        <span
-                          key={i}
-                          className="text-xs px-3 py-1 rounded-full bg-cream text-forest font-medium"
-                        >
-                          {highlight}
-                        </span>
-                      ))}
-                    </div>
+                    <p className="text-sm text-bark mb-4 leading-relaxed">{img.caption}</p>
                   </div>
                 </div>
               ))
             ) : (
               <div className="col-span-full rounded-xl bg-cream-light p-16 text-center text-bark shadow-forest/5">
-                No projects found yet.
+                Loading gallery images...
               </div>
             )}
           </div>
         </div>
       </section>
+
+      <YouTubeShortsSection />
 
       <section className="w-full section-padding bg-cream-light">
         <div className="section-container text-center">

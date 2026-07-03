@@ -17,3 +17,6 @@ sanity/.sanity/
 node_modules
 .next/
 .DS_Store
+
+# Database
+data/

@@ -1,33 +1,44 @@
 import Link from 'next/link'
 import { PageHero } from '@/components/shared/PageHero'
 import { SectionHeading } from '@/components/shared/SectionHeading'
-import { getBlogPosts } from '@/lib/sanityQueries'
-import type { BlogPost } from '@/lib/types'
 
 export const metadata = {
   title: 'Blog | Rajdhani Roop Garden | Park & Resort Design',
   description: 'Read insights on landscape design, resort architecture, and garden transformation in Bangladesh.',
 }
 
-export default async function BlogPage() {
-  let posts: BlogPost[] = []
-  let isError = false
+interface BlogPost {
+  id: string
+  title: string
+  slug: string
+  excerpt: string
+  content: string
+  image: string
+  author: string
+  category: string
+  published_at: string
+  read_time: number
+  tags: string
+}
 
+async function getPosts(): Promise<BlogPost[]> {
   try {
-    posts = await getBlogPosts()
-  } catch (error) {
-    console.error('Failed to load blog posts from Sanity:', error)
-    isError = true
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    const res = await fetch(`${baseUrl}/api/public/blog`, { cache: 'no-store' })
+    if (!res.ok) return []
+    return res.json()
+  } catch {
+    return []
   }
+}
 
-  const content = isError ? (
-    <div className="col-span-full rounded-xl bg-cream-light p-16 text-center text-bark shadow-forest/5 luxury-border">
-      Blog posts are temporarily unavailable.
-    </div>
-  ) : posts.length ? (
-    posts.map((post, index) => (
+export default async function BlogPage() {
+  const posts = await getPosts()
+
+  const content = posts.length ? (
+    posts.map((post) => (
       <Link
-        key={post.slug || index}
+        key={post.slug}
         href={`/blog/${post.slug}`}
         className="block rounded-xl overflow-hidden group bg-cream-light luxury-border-hover shadow-forest/5"
       >
@@ -47,7 +58,7 @@ export default async function BlogPage() {
               {post.category}
             </span>
             <span className="text-xs text-bark">
-              {new Date(post.publishedAt).toLocaleDateString('en-US', {
+              {new Date(post.published_at).toLocaleDateString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric',

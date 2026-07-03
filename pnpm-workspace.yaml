@@ -1,32 +1,7 @@
 packages:
   - '.'
-  - 'sanity'
 
 allowBuilds:
-  '@ampproject/toolbox-optimizer': set this to true or false
-  es5-ext: set this to true or false
+  better-sqlite3: true
   esbuild: true
-  msw: true
   sharp: true
-minimumReleaseAgeExclude:
-  - '@portabletext/editor@7.3.3'
-  - '@portabletext/plugin-character-pair-decorator@8.0.13'
-  - '@portabletext/plugin-input-rule@5.0.13'
-  - '@portabletext/plugin-markdown-shortcuts@8.0.13'
-  - '@portabletext/plugin-one-line@7.0.13'
-  - '@portabletext/plugin-paste-link@4.0.13'
-  - '@portabletext/plugin-typography@8.0.13'
-  - '@portabletext/sanity-bridge@3.1.1'
-  - '@sanity/cli-build@1.0.4'
-  - '@sanity/cli@7.2.2'
-  - '@sanity/diff@6.0.0'
-  - '@sanity/mutator@6.0.0'
-  - '@sanity/runtime-cli@16.0.0'
-  - '@sanity/schema@5.31.1'
-  - '@sanity/schema@6.0.0'
-  - '@sanity/types@5.31.1'
-  - '@sanity/types@6.0.0'
-  - '@sanity/util@6.0.0'
-  - groq@5.31.1
-  - next-sanity@13.0.12
-  - sanity@6.0.0
